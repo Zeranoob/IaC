@@ -1,0 +1,18 @@
+1. active developers mode on windows:
+	- settings
+	- update and security
+	- for developers
+	- developer mode
+
+2. install bash:
+	- control panel
+	- programs
+	- Turn Windows features on or off
+	- Windows Subsystem for Linux
+
+3. install linux distro
+	- windows store
+	- search ubuntu -> install
+	- open ubuntu
+	- enter user/pass
+	- sudo apt update

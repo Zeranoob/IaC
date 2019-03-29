@@ -1,0 +1,72 @@
+---
+# set these parameters to control the region, keypair, and AMI that are launched
+ec2_region: eu-central-1
+instances_keypair: cloud_ec2.pem 
+image_id: ami-03a68eb42a4eebf09
+
+# security groups to be created
+security_groups:
+  - name: ping
+    desc: the security group for the jumphost
+    rules:
+      - proto: icmp
+        cidr_ip: 0.0.0.0/0
+
+  - name: ssh
+    desc: the security group for the jumphost
+    rules:
+      - proto: tcp
+        from_port: 22
+        to_port: 22
+        cidr_ip: 0.0.0.0/0
+
+  - name: web
+    desc: the security group for the web server 
+    rules:
+      - proto: tcp
+        from_port: "80"
+        to_port: "80"
+        cidr_ip: 0.0.0.0/0
+      - proto: tcp
+        from_port: "443"
+        to_port: "443"
+        cidr_ip: 0.0.0.0/0
+
+  - name: tomcat
+    desc: the security group for the web server 
+    rules:
+      - proto: tcp
+        from_port: "8080"
+        to_port: "8080"
+        cidr_ip: 0.0.0.0/0
+      - proto: tcp
+        from_port: "8443"
+        to_port: "8443"
+        cidr_ip: 0.0.0.0/0
+  
+# Instances to launch be launched.
+# If you re-run the playbook after modifying exact_count,
+# instances will be terminated if the actual count > exact_count,
+# or new instances will be launched if actual count < exact_count.
+
+ec2_instances:
+  - instance_type: t2.micro
+    image: "{{ image_id }}"
+    assign_public_ip: true
+    keypair: "{{instances_keypair}}"
+    group: ['ping','ssh']
+    instance_tags: 
+        Name: dev_jumphost
+    exact_count: 0
+    count_tag: 
+        Name: dev_jumphost
+
+  - instance_type: t2.micro
+    image: "{{ image_id }}"
+    keypair: "{{instances_keypair}}"
+    group: ['ping','web', 'ssh','tomcat'] 
+    instance_tags: 
+        Name: web
+    exact_count: 0 
+    count_tag: 
+        Name: web

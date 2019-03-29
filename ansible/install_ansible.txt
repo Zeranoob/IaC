@@ -1,0 +1,15 @@
+1. open bash
+
+2. Install ansible: 
+	- sudo apt-get -y install python-pip python-dev libffi-dev libssl-dev
+	- pip install ansible --user
+	- pip install boto
+	- pip install boto3 
+	- pip install botocore
+	- echo 'PATH=$HOME/.local/bin:$PATH' >> ~/.bashrc
+	- source .bashrc
+
+3. Using ansible:
+	- ansible --version
+	- cd /mnt/c/<path_to_playbook>
+	- ansible-playbook <playbook>.yml --connection=local
