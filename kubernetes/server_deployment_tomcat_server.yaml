@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cloud-tomcat-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: cloud-tomcat-app
+    spec:
+      containers:
+      - name: cloud-tomcat-app
+        image: ricardonetmind/cloud_tomcat_app:part1
+        ports:
+        - containerPort: 8080

@@ -1,0 +1,55 @@
+1. download and install minikube: https://github.com/kubernetes/minikube/releases
+	- rename to minikube.exe
+	- add to path
+
+2. download kubectl: kubectl-windows-amd64-1.12.4.exe
+	- rename to kubectl.exe
+	- add to path
+
+3. start minikube:
+	- must be in c:/ driver
+	- minikube start
+	- minikube.exe status
+
+4. show nodes:
+	- kubectl get nodes
+	- kubectl describe node minikube
+	- kubectl get pods
+
+5. deploy web server:
+	- create server.yaml
+	- kubectl create -f server.yaml
+	- kubectl get pods
+	- kubectl delete pod testserver
+
+6. deploy server and test replicate:
+	- create server_deployment.yaml
+	- kubectl create -f server_deployment.yaml
+	- kubectl get pods	
+	- kubectl get deployment
+	- kubectl delete pod testserver-6d4cf4fd97-k4tbt
+
+7. access from outside, create service:
+	- create server_svc.yaml
+	- kubectl create -f server_svc.yaml
+	- kubectl get services
+	- kubectl describe pod testserver
+	- kubectl get pods
+	- minikube ip 192.168.99.100
+	- curl 192.168.99.100:32631
+
+8. test kill pod recreation with service 
+	- kubectl delete pod testserver-6d4cf4fd97-k4tbt
+	- kubectl get pods
+	- curl 192.168.99.100:32631
+
+9. scale up to 3 nodes:
+	- update server_deployment.yaml with replicas: 3
+	- kubectl replace -f server_deployment.yaml
+	- kubectl get pods
+	- curl 192.168.99.100:30718
+
+10. delete all:
+	- kubectl get deployments
+	- kubectl delete deployment testserver
+	- minikube.exe stop
