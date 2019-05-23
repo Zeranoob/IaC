@@ -1,0 +1,6 @@
+all:
+  hosts:
+    127.0.0.1
+  children:
+    tomcat:
+      127.0.0.1
