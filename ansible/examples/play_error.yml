@@ -7,3 +7,15 @@
         url:  "http://file1"
         dest: /tmp/url/file1
       ignore_errors:  yes
+    
+    - name: get file block
+      block:
+        - get_url:
+          url:  "http://file1"
+          dest: /tmp/dest
+      rescue:
+        - debug: 
+          msg:  "File not exist"
+      always:
+        - debug:
+          msg:  "Playbook finished"
