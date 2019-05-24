@@ -3,7 +3,7 @@
 - hosts: localhost  
   handlers:
     - name: Restart apache
-      became: true
+      become: true
       service:
         name: apache2
         state:  restarted
