@@ -10,7 +10,7 @@
 
     - name: Start apache
       become: true
-      services:
+      service:
         name: apache2
         state:  started
     
