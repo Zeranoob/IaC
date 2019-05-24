@@ -15,7 +15,7 @@
             dest: /tmp/dest
       rescue:
         - debug: 
-          msg:  "File not exist"
+            msg:  "File not exist"
       always:
         - debug:
-          msg:  "Playbook finished"
+            msg:  "Playbook finished"
