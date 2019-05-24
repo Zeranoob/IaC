@@ -29,3 +29,15 @@
         - testfile1
         - testfile2
         - testfile3
+    
+    - name: Condition ubuntu
+      file:
+        path: /tmp/ubuntu
+        state: touch
+      when: ansible_os_family ==  "Debian"
+    
+    - name: Condition redhat
+      file:
+        path: /tmp/redhat
+        state: touch
+      when: ansible_os_family ==  "RedHat"
