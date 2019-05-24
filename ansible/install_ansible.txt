@@ -9,6 +9,11 @@
 	- echo 'PATH=$HOME/.local/bin:$PATH' >> ~/.bashrc
 	- source .bashrc
 
+	RH8
+	- sudo pip3 install --upgrade pip
+	- sudo pip3 install --upgrade pip
+	- pip3 install ansible --user
+
 3. Using ansible:
 	- ansible --version
 	- cd /mnt/c/<path_to_playbook>
