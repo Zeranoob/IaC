@@ -1,0 +1,33 @@
+---
+
+- hosts: localhost  
+  tasks:
+    - name: Restart nginx
+      become: true
+      service:
+        name: nginx
+        state: restarted
+      tags:
+        - nginx
+
+    - name: Configure server
+      file:
+        path: /tmp/nginx
+        state:  touch
+      tags: 
+        - nginx
+
+    - name: Restart apache2
+      become: true
+      service:
+        name: apache2
+        state: restarted
+      tags:
+        - apache2
+
+    - name: Configure apache2
+      file:
+        path: /tmp/apache2
+        state:  touch
+      tags:
+        - apache2
