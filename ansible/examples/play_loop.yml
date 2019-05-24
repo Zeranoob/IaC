@@ -12,13 +12,13 @@
   tasks:
     - name: Create config
       file:
-        path: /temp/dir1
+        path: /tmp/dir1
         state: directory
       notify: "restart apache "
 
     - name: Create config
       file:
-        path: /temp/dir3
+        path: /tmp/dir3
         state: directory
 
     - name: With loops
