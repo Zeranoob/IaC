@@ -1,0 +1,14 @@
+---
+
+- hosts: apache  
+  tasks:
+    - name: Create file
+      become: true
+      file:
+        path: /tmp/testfile
+        state: touch
+      register: output
+
+
+    - debug:
+        msg:  "Debug message is {{ output }}"

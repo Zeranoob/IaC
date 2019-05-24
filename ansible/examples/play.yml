@@ -1,6 +1,6 @@
 ---
 
-- hosts: localhost  
+- hosts: apache  
   tasks:
     - name: Install apache
       become: true
@@ -8,7 +8,7 @@
         name: apache2
         state: latest
 
-    -name: Start apache
+    - name: Start apache
       become: true
       services:
         name: apache2
