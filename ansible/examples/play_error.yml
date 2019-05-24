@@ -11,8 +11,8 @@
     - name: get file block
       block:
         - get_url:
-          url:  "http://file1"
-          dest: /tmp/dest
+            url:  "http://file1"
+            dest: /tmp/dest
       rescue:
         - debug: 
           msg:  "File not exist"
