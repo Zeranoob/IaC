@@ -6,3 +6,4 @@
       get_url:
         url:  "http://file1"
         dest: /tmp/url/file1
+      ignore_errors:  yes
