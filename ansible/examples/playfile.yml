@@ -1,6 +1,6 @@
 ---
 
-- hosts: apache  
+- hosts: localhost  
   tasks:
     - name: Create file
       become: true
